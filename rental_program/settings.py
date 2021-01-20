@@ -32,11 +32,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
+    'accounts.apps.AccountsConfig',
     'owners.apps.OwnersConfig',
     'properties.apps.PropertiesConfig',
     'renters.apps.RentersConfig',
+    'reviews.apps.ReviewsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'rental_program.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [os.path.join(BASE_DIR, 'templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
