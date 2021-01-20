@@ -1,5 +1,5 @@
 from django.db import models
-
+from reviews.models import Review
 
 class OwnerManager(models.Manager):
     def validate_owner(self, pd):
@@ -20,6 +20,7 @@ class Owner(models.Model):
     photo = models.ImageField(upload_to='photos/owners/%Y/%m/%d/', blank=True)
     description = models.TextField(default='')
     phone = models.CharField(max_length=100)
+    reviews = models.ForeignKey(Review, on_delete=models.DO_NOTHING)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     objects = OwnerManager()
