@@ -20,7 +20,7 @@ class Owner(models.Model):
     photo = models.ImageField(upload_to='photos/owners/%Y/%m/%d/', blank=True)
     description = models.TextField(default='')
     phone = models.CharField(max_length=100)
-    reviews = models.ForeignKey(Review, on_delete=models.DO_NOTHING)
+    reviews = models.ForeignKey(Review, on_delete=models.DO_NOTHING, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     objects = OwnerManager()

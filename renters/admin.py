@@ -5,7 +5,7 @@ from django.contrib import admin
 from .models import Renter
 
 class RenterAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email', 'kids', 'martial_status', 'income')
+    list_display = ('id', 'first_name', 'last_name', 'email', 'kids', 'martial_status', 'income')
     list_display_links = ('id', 'first_name', 'last_name')
     # list_filter = ('',)
     # list_editable = ('',)
