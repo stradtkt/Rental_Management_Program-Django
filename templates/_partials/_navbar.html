@@ -2,8 +2,8 @@
 <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="https://demos.creative-tim.com/material-kit-pro/index.html">
-          Material Kit PRO </a>
+        <a class="navbar-brand" href="{% url 'pages:home' %}">
+          Welcome Home </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-toggler-icon"></span>
@@ -13,60 +13,97 @@
       </div>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-          <li class="dropdown nav-item">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-              <i class="material-icons">apps</i> Components
-            </a>
-            <div class="dropdown-menu dropdown-with-icons">
-              <a href="../presentation.html" class="dropdown-item">
-                <i class="material-icons">line_style</i> Presentation
-              </a>
-              <a href="../index.html" class="dropdown-item">
-                <i class="material-icons">layers</i> All Components
-              </a>
-              <a href="http://demos.creative-tim.com/material-kit-pro/docs/2.1/getting-started/introduction.html" class="dropdown-item">
-                <i class="material-icons">content_paste</i> Documentation
-              </a>
-            </div>
-          </li>
-          <li class="dropdown nav-item">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-              <i class="material-icons">view_day</i> Sections
-            </a>
-            <div class="dropdown-menu dropdown-with-icons">
-              <a href="../sections.html#headers" class="dropdown-item">
-                <i class="material-icons">dns</i> Headers
-              </a>
-              <a href="../examples/blog-post.html" class="dropdown-item">
-                <i class="material-icons">art_track</i> Blog Post
-              </a>
-                <a href="#" class="dropdown-item">
-                <i class="material-icons">art_track</i> Blog Post
-              </a>
-            </div>
-          </li>
-          <li class="dropdown nav-item">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-              <i class="material-icons">view_carousel</i> Examples
-            </a>
-            <div class="dropdown-menu dropdown-with-icons">
-              <a href="#" class="dropdown-item">
-                <i class="material-icons">account_balance</i> About Us
-              </a>
-              <a href="#" class="dropdown-item">
-                <i class="material-icons">art_track</i> Blog Post
-              </a>
-                <a href="#" class="dropdown-item">
-                <i class="material-icons">art_track</i> Blog Post
-              </a>
 
+          <li class="dropdown nav-item">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+              <i class="material-icons">home</i> Home
+            </a>
+            <div class="dropdown-menu dropdown-with-icons">
+              <a href="{% url 'pages:home' %}" class="dropdown-item">
+                <i class="material-icons">home</i> Main Page
+              </a>
             </div>
           </li>
-          <li class="button-container nav-item iframe-extern">
-            <a href="https://www.creative-tim.com/product/material-kit-pro?ref=presentation" target="_blank" class="btn  btn-rose   btn-round btn-block">
-              <i class="material-icons">shopping_cart</i> Buy Now
+
+          <li class="dropdown nav-item">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+              <i class="material-icons">search</i> Find A Home
             </a>
+            <div class="dropdown-menu dropdown-with-icons">
+              <a href="#" class="dropdown-item">
+                <i class="material-icons">home</i> Home
+              </a>
+            </div>
           </li>
+
+          <li class="dropdown nav-item">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+              <i class="material-icons">assessment</i> Dashboard
+            </a>
+            <div class="dropdown-menu dropdown-with-icons">
+              <a href="#" class="dropdown-item">
+                <i class="material-icons">home</i> Home
+              </a>
+            </div>
+          </li>
+
+            <li class="dropdown nav-item">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+              <i class="material-icons">manage_accounts</i> Account
+            </a>
+            <div class="dropdown-menu dropdown-with-icons">
+              <a href="#" class="dropdown-item">
+                <i class="material-icons">login</i> Login
+              </a>
+              <a href="#" class="dropdown-item">
+                <i class="material-icons">add</i> Register
+              </a>
+                <a href="#" class="dropdown-item">
+                <i class="material-icons">logout</i> Log Out
+              </a>
+                <a href="#" class="dropdown-item">
+                <i class="material-icons">settings</i> Settings
+              </a>
+            </div>
+          </li>
+
+            <li class="dropdown nav-item">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+              <i class="material-icons">fact_check</i> FAQ
+            </a>
+            <div class="dropdown-menu dropdown-with-icons">
+              <a href="{% url 'pages:about' %}" class="dropdown-item">
+                <i class="material-icons">account_circle</i> About Us
+              </a>
+              <a href="#" class="dropdown-item">
+                <i class="material-icons">privacy_tip</i> Privacy Policy
+              </a>
+                <a href="#" class="dropdown-item">
+                <i class="material-icons">ballot</i> Terms of Agreement
+              </a>
+                <a href="#" class="dropdown-item">
+                <i class="material-icons">fact_check</i> FAQ
+              </a>
+                <a href="{% url 'pages:contact' %}" class="dropdown-item">
+                <i class="material-icons">create</i> Contact
+              </a>
+            </div>
+          </li>
+{##}
+{#            <li class="dropdown nav-item">#}
+{#            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">#}
+{#              <i class="material-icons">assessment</i> Dashboard#}
+{#            </a>#}
+{#            <div class="dropdown-menu dropdown-with-icons">#}
+{#              <a href="#" class="dropdown-item">#}
+{#                <i class="material-icons">account_balance</i> About Us#}
+{#              </a>#}
+{#              <a href="#" class="dropdown-item">#}
+{#                <i class="material-icons">art_track</i> Blog Post#}
+{#              </a>#}
+{#            </div>#}
+{#          </li>#}
+
         </ul>
       </div>
     </div>
