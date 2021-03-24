@@ -9,6 +9,7 @@ urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
     path('', include('pages.urls')),
     path('accounts/', include('accounts.urls')),
+    path('home/', include('home.urls')),
     path('owners/', include('owners.urls')),
     path('properties/', include('properties.urls')),
     path('renters/', include('renters.urls')),

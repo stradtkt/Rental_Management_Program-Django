@@ -30,7 +30,7 @@
               <i class="material-icons">search</i> Find A Home
             </a>
             <div class="dropdown-menu dropdown-with-icons">
-              <a href="#" class="dropdown-item">
+              <a href="{% url 'home:homes' %}" class="dropdown-item">
                 <i class="material-icons">home</i> Home
               </a>
             </div>
@@ -52,13 +52,13 @@
               <i class="material-icons">manage_accounts</i> Account
             </a>
             <div class="dropdown-menu dropdown-with-icons">
-              <a href="#" class="dropdown-item">
+              <a href="{% url 'accounts:login' %}" class="dropdown-item">
                 <i class="material-icons">login</i> Login
               </a>
-              <a href="#" class="dropdown-item">
+              <a href="{% url 'accounts:register' %}" class="dropdown-item">
                 <i class="material-icons">add</i> Register
               </a>
-                <a href="#" class="dropdown-item">
+                <a href="{% url 'accounts:logout' %}" class="dropdown-item">
                 <i class="material-icons">logout</i> Log Out
               </a>
                 <a href="#" class="dropdown-item">

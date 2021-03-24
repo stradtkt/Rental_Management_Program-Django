@@ -27,3 +27,8 @@ class HomePageDetailsView(DetailView):
     model = Property
     context_object_name = "home"
     template_name = "pages/details.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(HomePageDetailsView, self).get_context_data(*args, **kwargs)
+        context['house_featured'] = Property.objects.all()
+        return context

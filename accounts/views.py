@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from renters.models import Renter, Review
@@ -29,7 +29,6 @@ def register(request):
         last_name = request.POST['last_name']
         username = request.POST['username']
         email = request.POST['email']
-        is_staff = request.POST['is_staff']
         password = request.POST['password']
         password2 = request.POST['password2']
         if password == password2:
@@ -47,7 +46,6 @@ def register(request):
                         email=email,
                         first_name=first_name,
                         last_name=last_name,
-                        is_staff=is_staff
                     )
                     user.save()
                     messages.success(request, 'You are now registered and can now log in!')
@@ -62,8 +60,8 @@ def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         messages.success(request, 'You are now logged out!')
-        return redirect('pages:home')
-    return redirect('pages:home')
+        return redirect('home')
+    return redirect('home')
 
 
 def dashboard(request):

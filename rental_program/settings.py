@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'pages.apps.PagesConfig',
     'accounts.apps.AccountsConfig',
+    'home.apps.HomeConfig',
     'owners.apps.OwnersConfig',
     'properties.apps.PropertiesConfig',
     'renters.apps.RentersConfig',
