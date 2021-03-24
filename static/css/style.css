@@ -23,3 +23,12 @@ footer ul li a {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
+
+.home-featured {
+    width: 25% !important;
+    height: auto !important;
+}
+.material-icons.dollar {
+    color: forestgreen;
+    background-color: #eee;
+}

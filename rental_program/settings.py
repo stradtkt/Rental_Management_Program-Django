@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'debug_toolbar',
-    'dashboard.apps.DashboardConfig',
     'pages.apps.PagesConfig',
     'accounts.apps.AccountsConfig',
     'owners.apps.OwnersConfig',
