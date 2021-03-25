@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} {{ super }} {{ house.address }} {% endblock %}
+{% block title %} {{ super }} {{ home.address }} {% endblock %}
 {% block content %}
     <div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ home.photo_main.url }}');">
     <div class="container">
       <div class="row title-row">
-
+        <h1><strong>{{ home.address }} {{ home.city }}, {{ home.state }} {{ home.zipcode }}</strong></h1>
+          <h3><strong>{{ home.title }}</strong></h3>
       </div>
     </div>
   </div>

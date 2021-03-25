@@ -33,6 +33,9 @@
               <a href="{% url 'home:homes' %}" class="dropdown-item">
                 <i class="material-icons">home</i> Home
               </a>
+                <a href="{% url 'owners:owners' %}" class="dropdown-item">
+                <i class="material-icons">account_circle</i> Owners
+              </a>
             </div>
           </li>
 
@@ -41,7 +44,7 @@
               <i class="material-icons">assessment</i> Dashboard
             </a>
             <div class="dropdown-menu dropdown-with-icons">
-              <a href="#" class="dropdown-item">
+              <a href="{% url 'dashboard:dashboard' %}" class="dropdown-item">
                 <i class="material-icons">home</i> Dashboard Home
               </a>
             </div>
@@ -89,20 +92,6 @@
               </a>
             </div>
           </li>
-{##}
-{#            <li class="dropdown nav-item">#}
-{#            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">#}
-{#              <i class="material-icons">assessment</i> Dashboard#}
-{#            </a>#}
-{#            <div class="dropdown-menu dropdown-with-icons">#}
-{#              <a href="#" class="dropdown-item">#}
-{#                <i class="material-icons">account_balance</i> About Us#}
-{#              </a>#}
-{#              <a href="#" class="dropdown-item">#}
-{#                <i class="material-icons">art_track</i> Blog Post#}
-{#              </a>#}
-{#            </div>#}
-{#          </li>#}
 
         </ul>
       </div>
