@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
-from renters.models import Renter, Review
+from renters.models import Renter
 
 def index(request):
     context = {}

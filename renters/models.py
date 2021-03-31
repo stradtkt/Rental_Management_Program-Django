@@ -1,5 +1,4 @@
 from django.db import models
-from reviews.models import Review
 
 class RenterManager(models.Manager):
     def validate_renter(self, pd):
@@ -25,7 +24,6 @@ class Renter(models.Model):
     martial_status = models.CharField(max_length=100, default='')
     income = models.CharField(max_length=100, default='')
     picture = models.ImageField(upload_to='photos/renters/%Y/%m/%d/', blank=True)
-    reviews = models.ForeignKey(Review, on_delete=models.DO_NOTHING)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     objects = RenterManager()

@@ -3,97 +3,180 @@
 {% block title %} {{ super }} {{ owner.name }} {% endblock %}
 {% block content %}
 
-  <div class="page-header header-filter" data-parallax="true" style="background-image: url('{% static "kit/assets/img/city-profile.jpg" %}');"></div>
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('{% static "kit/assets/img/bg3.jpg" %}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 ml-auto mr-auto">
+                <div class="avatar" style="display: block; text-align: center;">
+                <img src="{{ owner.photo.url }}" alt="{{ owner.name }}" class="img-raised rounded-circle img-fluid">
+              </div>
+                <h1 class="text-center"><strong>{{ owner.name }}</strong></h1>
+            </div>
+        </div>
+    </div>
+  </div>
   <div class="main main-raised">
     <div class="profile-content">
       <div class="container">
-        <div class="row">
-          <div class="col-md-6 ml-auto mr-auto">
-            <div class="profile">
-              <div class="avatar">
-                <img src="{{ owner.photo.url }}" alt="{{ owner.name }}" class="img-raised rounded-circle img-fluid">
-              </div>
-              <div class="name">
-                <h3 class="title">{{ owner.name }}</h3>
-                <h6></h6>
-                <a href="#" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                <a href="#" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
-              </div>
+      <div class="row">
+          <div class="col-md-10 ml-auto mr-auto mt-5">
+              <div class="card card-nav-tabs card-raised">
+    <div class="card-header">
+        <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+        <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+                <ul class="nav nav-tabs" data-tabs="tabs">
+                    <li class="nav-item" style="color:black;">
+                        <a class="nav-link active" href="#about" data-toggle="tab">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" data-toggle="tab">Contact Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#writeReview" data-toggle="tab">Write A Review</a>
+                    </li>
+                </ul>
             </div>
-          </div>
         </div>
-        <div class="description text-center">
-          <p>An artist of considerable range, Chet Faker &#x2014; the name taken by Melbourne-raised, Brooklyn-based Nick Murphy &#x2014; writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+    </div>
+                  <div class="card-body ">
+        <div class="tab-content text-center">
+            <div class="tab-pane active" id="about">
+                <h5 class="card-title">About</h5>
+                <p>{{ owner.description }}</p>
+                <p>I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it&#x2019;s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+            </div>
+            <div class="tab-pane" id="contact">
+                <h5 class="card-title">Contact Information</h5>
+                <p>Phone Number: {{ owner.phone }}</p>
+                <p>Email Address: {{ owner.email }}</p>
+            </div>
+            <div class="tab-pane active" id="writeReview">
+                <h5 class="card-title">Write A Review</h5>
+                <form action="{% url 'owners:create_review' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="title" placeholder="Enter A Title">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="description" id="description" class="form-control" cols="30" rows="10" placeholder="Enter A Description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" name="stars">
+                            <option disabled>Select An Amount Of Stars</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </form>
+
+            </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 ml-auto mr-auto">
-            <div class="profile-tabs">
-              <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
-                    <i class="material-icons">camera</i>
-                    Studio
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#works" role="tab" data-toggle="tab">
-                    <i class="material-icons">palette</i>
-                    Work
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                    <i class="material-icons">favorite</i>
-                    Favorite
-                  </a>
-                </li>
-              </ul>
-            </div>
+    </div>
+  </div>
           </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6 ml-auto mr-auto text-center mt-3">
+              <h3>Homes</h3>
+          </div>
+      </div>
+          <div class="row">
+              {% if properties %}
+                {% for property in properties %}
+                    <div class="col-md-4">
+                        <div class="rotating-card-container">
+                            <div class="card card-rotate card-background">
+                                <div class="front front-background" style="background-image:  url('{{ property.photo_main.url }}');">
+                                    <div class="card-body">
+                                        <h6 class="card-category">{{ property.title }}</h6>
+                                        <a href="#">
+                                            <h3 class="card-title">{{ property.address }} {{ property.city }}, {{ property.state }} {{ property.zipcode }}</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="back back-background" style="background-image: url('{{ property.photo_main.url }}');">
+                                    <div class="card-body">
+                                        <h5 class="card-title">House Details</h5>
+                                        <p class="card-description">{{ property.description|truncatechars:100 }} <br>
+                                            <i class="material-icons dollar">paid</i> {{ property.price }} <br>
+                                            <strong>Beds: </strong>{{ property.bedrooms }} <strong>Baths: </strong>{{ property.bathrooms }} <br>
+                                            <strong>SQFT: </strong> {{ property.sqft }} <strong>Lot Size: </strong> {{ property.lot_size }}
+                                        </p>
+                                        <div class="footer justify-content-center">
+                                            <a href="#" class="btn btn-info btn-just-icon btn-fill btn-round">
+                                                <i class="material-icons">subject</i>
+                                            </a>
+                                            <a href="#" class="btn btn-success btn-just-icon btn-fill btn-round btn-wd">
+                                                <i class="material-icons">mode_edit</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              {% endfor %}
+          {% endif %}
         </div>
-        <div class="tab-content tab-space">
-          <div class="tab-pane active text-center gallery" id="studio">
-            <div class="row">
-              <div class="col-md-3 ml-auto">
-                <img src="../assets/img/examples/studio-1.jpg" class="rounded">
-                <img src="../assets/img/examples/studio-2.jpg" class="rounded">
-              </div>
-              <div class="col-md-3 mr-auto">
-                <img src="../assets/img/examples/studio-5.jpg" class="rounded">
-                <img src="../assets/img/examples/studio-4.jpg" class="rounded">
-              </div>
-            </div>
+      <div class="row">
+          <div class="col-md-6 ml-auto mr-auto text-center mt-3">
+              <h3>Reviews</h3>
           </div>
-          <div class="tab-pane text-center gallery" id="works">
-            <div class="row">
-              <div class="col-md-3 ml-auto">
-                <img src="../assets/img/examples/olu-eletu.jpg" class="rounded">
-                <img src="../assets/img/examples/clem-onojeghuo.jpg" class="rounded">
-                <img src="../assets/img/examples/cynthia-del-rio.jpg" class="rounded">
-              </div>
-              <div class="col-md-3 mr-auto">
-                <img src="../assets/img/examples/mariya-georgieva.jpg" class="rounded">
-                <img src="../assets/img/examples/clem-onojegaw.jpg" class="rounded">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane text-center gallery" id="favorite">
-            <div class="row">
-              <div class="col-md-3 ml-auto">
-                <img src="../assets/img/examples/mariya-georgieva.jpg" class="rounded">
-                <img src="../assets/img/examples/studio-3.jpg" class="rounded">
-              </div>
-              <div class="col-md-3 mr-auto">
-                <img src="../assets/img/examples/clem-onojeghuo.jpg" class="rounded">
-                <img src="../assets/img/examples/olu-eletu.jpg" class="rounded">
-                <img src="../assets/img/examples/studio-1.jpg" class="rounded">
-              </div>
-            </div>
-          </div>
+      </div>
+      <div class="row">
+          {% for review in reviews %}
+  <div class="col-md-3 ml-auto mr-auto">
+    <div class="card card-pricing bg-info"><div class="card-body ">
+        <div class="icon">
+            <i class="material-icons">star</i>
         </div>
+        <h3 class="card-title">{{ review.title }}</h3>
+        {% if review.stars == 1 %}
+            <p>
+                <i class="material-icons">star</i>
+            </p>
+        {% elif review.stars == 2 %}
+            <p>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+            </p>
+        {% elif review.stars == 3 %}
+            <p>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+            </p>
+        {% elif review.stars == 4 %}
+            <p>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+            </p>
+        {% else %}
+            <p>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+            </p>
+        {% endif %}
+        <p class="card-description">
+            {{ review.description }}
+        </p>
+        </div>
+    </div>
+  </div>
+          {% endfor %}
+</div>
       </div>
     </div>
   </div>
+
 
 {% endblock %}

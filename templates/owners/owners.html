@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} {{ super }} {% endblock %}
 {% block content %}
  <div class="page-header header-filter" data-parallax="true" style="background-image: url('{% static "kit/assets/img/bg5.jpg" %}');">
@@ -7,10 +8,6 @@
         <div class="col-md-8 ml-auto mr-auto text-center">
           <h1 class="title">Owners</h1>
           <h4>The Opportunities Are Endless With These Home Bearing People</h4>
-          <br>
-          <a href="#" class="btn btn-info btn-round btn-lg">
-            <i class="material-icons">format_align_left</i> More
-          </a>
         </div>
       </div>
     </div>
@@ -19,7 +16,7 @@
         <div class="container">
             <div class="section section-text">
                 <div class="row">
-                    <div class="col-md-8 ml-auto mr-auto">
+                    <div class="col-md-12 ml-auto mr-auto">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -36,7 +33,7 @@
                             {% if owners %}
                                 {% for owner in owners %}
                                     <tr>
-                                        <td><img src="{{ owner.photo.url }}" alt="{{ owner.name }}" class="img-fluid"></td>
+                                        <td><img src="{{ owner.photo.url }}" alt="{{ owner.name }}" width="230px" height="300px" class="img-fluid"></td>
                                         <td>{{ owner.name }}</td>
                                         <td>{{ owner.email }}</td>
                                         <td>{{ owner.description }}</td>
