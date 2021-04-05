@@ -1,5 +1,6 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect, reverse
+from django.urls import reverse
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Owner, Review
 from accounts.models import User
@@ -13,8 +14,8 @@ class OwnerListView(ListView):
     template_name = "owners/owners.html"
 
 
-def owner_detail(request, pk):
-    owner = Owner.objects.get(id=pk)
+def owner_detail(request, id):
+    owner = Owner.objects.get(id=id)
     properties = Property.objects.filter(owner=owner).order_by('-price')[:3]
     reviews = Review.objects.filter(owner=owner).order_by('-stars')[:4]
     context = {
@@ -27,18 +28,15 @@ def owner_detail(request, pk):
 
 def create_review(request, id):
     if request.method == 'POST':
-        user = User.objects.get(id=request.session['id'])
+        username = request.user.username
+        user = User.objects.get(username=username)
         owner = Owner.objects.get(id=id)
         title = request.POST['title']
         description = request.POST['description']
         stars = request.POST['stars']
-        if user is not None:
-            Review.objects.create(user=user, owner=owner, title=title, description=description, stars=stars)
-            messages.success(request, "Review added!")
-            return redirect("owners:profile")
-        else:
-            messages.error(request, "You need to be logged in to write a review!")
-            return redirect("accounts:login")
+        Review.objects.create(user=user, owner=owner, title=title, description=description, stars=stars)
+        messages.success(request, "Review added!")
+        return redirect('/owners/{}/'.format(id))
     else:
         return render(request, "owners/profile.html")
 

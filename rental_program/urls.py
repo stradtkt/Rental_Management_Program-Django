@@ -7,10 +7,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include(debug_toolbar.urls)),
-    path('', include('pages.urls')),
-    path('dashboard/', include('dashboard.urls')),
-    path('accounts/', include('accounts.urls')),
-    path('home/', include('home.urls')),
-    path('renters/', include('renters.urls')),
-    path('owners/', include('owners.urls')),
+    path('', include('pages.urls', namespace='pages')),
+    path('dashboard/', include('dashboard.urls', namespace='dashboard')),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('home/', include('home.urls', namespace='home')),
+    path('renters/', include('renters.urls', namespace='renters')),
+    path('owners/', include('owners.urls', namespace='owners')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

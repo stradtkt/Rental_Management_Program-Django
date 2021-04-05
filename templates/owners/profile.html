@@ -52,10 +52,11 @@
                 <p>Email Address: {{ owner.email }}</p>
             </div>
             <div class="tab-pane" id="writeReview">
+                {% include '_partials/_alerts.html' %}
                 <h5 class="card-title">Write A Review</h5>
                 <form action="{% url 'owners:create_review' owner.id %}" method="post">
                     {% csrf_token %}
-                    <input type="hidden" name="owner" value="{{ owner.id }}">
+                    <input type="hidden" name="next" value="{{ request.path }}">
                     <div class="form-group">
                         <input class="form-control" type="text" name="title" placeholder="Enter A Title">
                     </div>

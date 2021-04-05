@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-translate">
         <a class="navbar-brand" href="{% url 'pages:home' %}">
-          Welcome Home ({{ user.username }})</a>
+          Welcome Home {{ user.username }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-toggler-icon"></span>
@@ -86,13 +86,13 @@
                     <a href="{% url 'pages:about' %}" class="dropdown-item">
                         <i class="material-icons">account_circle</i> About Us
                     </a>
-                    <a href="#" class="dropdown-item">
+                    <a href="{% url 'pages:privacy' %}" class="dropdown-item">
                         <i class="material-icons">privacy_tip</i> Privacy Policy
                     </a>
-                    <a href="#" class="dropdown-item">
+                    <a href="{% url 'pages:terms' %}" class="dropdown-item">
                         <i class="material-icons">ballot</i> Terms of Agreement
                     </a>
-                    <a href="#" class="dropdown-item">
+                    <a href="{% url 'pages:faq' %}" class="dropdown-item">
                         <i class="material-icons">fact_check</i> FAQ
                     </a>
                     <a href="{% url 'pages:contact' %}" class="dropdown-item">
