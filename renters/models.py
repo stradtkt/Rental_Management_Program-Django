@@ -29,4 +29,3 @@ class Renter(models.Model):
     objects = RenterManager()
     def __str__(self):
         return self.first_name + " " + self.last_name
-

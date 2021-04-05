@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages, auth
 from renters.models import Renter
+
 
 def index(request):
     context = {}
     return render(request, 'accounts/accounts.html', context)
+
 
 def login(request):
     if request.method == 'POST':
@@ -57,11 +60,9 @@ def register(request):
 
 
 def logout(request):
-    if request.method == 'POST':
-        auth.logout(request)
-        messages.success(request, 'You are now logged out!')
-        return redirect('home')
-    return redirect('home')
+    auth.logout(request)
+    messages.success(request, 'You are now logged out!')
+    return redirect('pages:home')
 
 
 def dashboard(request):

@@ -33,7 +33,5 @@ class Property(models.Model):
     photo_11 = models.ImageField(upload_to='photos/properties/%Y/%m/%d', blank=True, default=None)
     photo_12 = models.ImageField(upload_to='photos/properties/%Y/%m/%d', blank=True, default=None)
     is_published = models.BooleanField(default=True)
-
-
     def __str__(self):
         return self.title

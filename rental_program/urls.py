@@ -11,7 +11,6 @@ urlpatterns = [
     path('dashboard/', include('dashboard.urls')),
     path('accounts/', include('accounts.urls')),
     path('home/', include('home.urls')),
-    path('owners/', include('owners.urls')),
-    path('properties/', include('properties.urls')),
     path('renters/', include('renters.urls')),
+    path('owners/', include('owners.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

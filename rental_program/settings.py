@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'accounts.apps.AccountsConfig',
     'home.apps.HomeConfig',
-    'owners.apps.OwnersConfig',
     'properties.apps.PropertiesConfig',
     'renters.apps.RentersConfig',
+    'owners.apps.OwnersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'rental_program.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'rentaldb',
+        'NAME': 'rental',
         'USER': 'postgres',
         'PASSWORD': 'root',
         'HOST': 'localhost'
@@ -136,3 +136,17 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success',
+    messages.INFO: 'info',
+    messages.WARNING: 'warning'
+}
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True

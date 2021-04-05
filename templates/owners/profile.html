@@ -51,10 +51,11 @@
                 <p>Phone Number: {{ owner.phone }}</p>
                 <p>Email Address: {{ owner.email }}</p>
             </div>
-            <div class="tab-pane active" id="writeReview">
+            <div class="tab-pane" id="writeReview">
                 <h5 class="card-title">Write A Review</h5>
-                <form action="{% url 'owners:create_review' %}" method="post">
+                <form action="{% url 'owners:create_review' owner.id %}" method="post">
                     {% csrf_token %}
+                    <input type="hidden" name="owner" value="{{ owner.id }}">
                     <div class="form-group">
                         <input class="form-control" type="text" name="title" placeholder="Enter A Title">
                     </div>
@@ -71,6 +72,7 @@
                             <option value="5">5</option>
                         </select>
                     </div>
+                    <input type="submit" class="btn btn-success btn-lg btn-round" value="Write Review">
                 </form>
 
             </div>

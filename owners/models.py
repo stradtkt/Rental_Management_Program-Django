@@ -1,4 +1,5 @@
 from django.db import models
+from accounts.models import User
 
 
 class OwnerManager(models.Manager):
@@ -39,6 +40,7 @@ class ReviewManager(models.Manager):
 
 class Review(models.Model):
     owner = models.ForeignKey(Owner, on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=200)
     description = models.TextField(default='')
     stars = models.IntegerField(default=5)
