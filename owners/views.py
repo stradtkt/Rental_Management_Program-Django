@@ -7,15 +7,16 @@ from accounts.models import User
 from properties.models import Property
 
 
-class OwnerListView(ListView):
-    fields = ("name", "email", "photo", "description", "phone", "reviews")
-    model = Owner
-    context_object_name = "owners"
-    template_name = "owners/owners.html"
+def owners(request):
+    owners = Owner.objects.all().order_by("name")
+    context = {
+        "owners": owners,
+    }
+    return render(request, "owners/owners.html", context)
 
 
-def owner_detail(request, id):
-    owner = Owner.objects.get(id=id)
+def owner_detail(request, pk):
+    owner = Owner.objects.get(id=pk)
     properties = Property.objects.filter(owner=owner).order_by('-price')[:3]
     reviews = Review.objects.filter(owner=owner).order_by('-stars')[:4]
     context = {
