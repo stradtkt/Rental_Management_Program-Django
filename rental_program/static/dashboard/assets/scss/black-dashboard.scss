@@ -1,21 +1,18 @@
-
 /*!
 
-=========================================================
-* Black Dashboard - v1.0.1
-=========================================================
+ =========================================================
+ * Black Dashboard Pro - v1.1.1
+ =========================================================
 
-* Product Page: https://www.creative-tim.com/product/black-dashboard
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
+ * Product Page: https://themes.getbootstrap.com/product/black-dashboard-pro-premium-bootstrap-4-admin/
+ * Copyright 2019 Creative Tim (http://www.creative-tim.com)
 
 
-* Coded by Creative Tim
+ =========================================================
 
-=========================================================
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
+ */
 
  // Core
 
@@ -65,32 +62,64 @@
 
  // Custom components
 
- @import "black-dashboard/custom/alerts";
- @import "black-dashboard/custom/buttons";
- @import "black-dashboard/custom/dropdown";
- @import "black-dashboard/custom/footer";
- @import "black-dashboard/custom/forms";
- @import "black-dashboard/custom/images";
- @import "black-dashboard/custom/modal";
- @import "black-dashboard/custom/navbar";
- @import "black-dashboard/custom/type";
+ @import "black-dashboard/custom/reboot.scss";
+ @import "black-dashboard/custom/global.scss";
+ @import "black-dashboard/custom/utilities.scss";
+ @import "black-dashboard/custom/alerts.scss";
+ @import "black-dashboard/custom/avatars.scss";
+ @import "black-dashboard/custom/badge.scss";
+ @import "black-dashboard/custom/buttons.scss";
+ @import "black-dashboard/custom/close.scss";
+ @import "black-dashboard/custom/custom-forms.scss";
+ @import "black-dashboard/custom/dropdown.scss";
+ @import "black-dashboard/custom/footer.scss";
+ @import "black-dashboard/custom/forms.scss";
+ @import "black-dashboard/custom/grid.scss";
+ @import "black-dashboard/custom/icons.scss";
+ @import "black-dashboard/custom/images.scss";
+ @import "black-dashboard/custom/input-group.scss";
+ @import "black-dashboard/custom/info-areas.scss";
+ @import "black-dashboard/custom/modal.scss";
+ @import "black-dashboard/custom/nav.scss";
+ @import "black-dashboard/custom/navbar.scss";
+ @import "black-dashboard/custom/pagination.scss";
+ @import "black-dashboard/custom/tabs.scss";
+ @import "black-dashboard/custom/pills.scss";
+ @import "black-dashboard/custom/popover.scss";
+ @import "black-dashboard/custom/progress.scss";
+ @import "black-dashboard/custom/type.scss";
  @import "black-dashboard/custom/tables";
  @import "black-dashboard/custom/checkboxes-radio";
  @import "black-dashboard/custom/fixed-plugin";
- @import "black-dashboard/custom/sidebar-and-main-panel";
- @import "black-dashboard/custom/misc";
- @import "black-dashboard/custom/rtl";
- @import "black-dashboard/custom/input-group";
-
+ @import "black-dashboard/custom/sidebar-and-main-panel.scss";
+ @import "black-dashboard/custom/misc.scss";
+ @import "black-dashboard/custom/rtl.scss";
+ @import "black-dashboard/custom/timeline.scss";
 
  // Vendor / Plugins
 
-@import "black-dashboard/custom/vendor/plugin-perfect-scrollbar";
-@import "black-dashboard/custom/vendor/plugin-animate-bootstrap-notify";
+@import "black-dashboard/custom/vendor/plugin-datetimepicker.scss";
+@import "black-dashboard/custom/vendor/plugin-nouislider.scss";
+@import "black-dashboard/custom/vendor/plugin-fullcalendar.scss";
+@import "black-dashboard/custom/vendor/plugin-sweetalert2.scss";
+@import "black-dashboard/custom/vendor/plugin-bootstrap-switch.scss";
+@import "black-dashboard/custom/vendor/plugin-bootstrap-select.scss";
+@import "black-dashboard/custom/vendor/plugin-jasny-fileupload.scss";
+@import "black-dashboard/custom/vendor/plugin-tagsinput.scss";
+@import "black-dashboard/custom/vendor/plugin-perfect-scrollbar.scss";
+@import "black-dashboard/custom/vendor/plugin-jquery.jvectormap.scss";
+@import "black-dashboard/custom/vendor/plugin-datatables.net.scss";
+@import "black-dashboard/custom/vendor/plugin-animate-bootstrap-notify.scss";
+@import "black-dashboard/custom/vendor/plugin-card-wizard.scss";
+@import "black-dashboard/custom/vendor/plugin-chartjs.scss";
+
+// example pages and sections
+
+@import "black-dashboard/custom/example-pages.scss";
 
 // light mode
 
-@import "black-dashboard/custom/white-content";
+@import "black-dashboard/custom/white-content.scss";
 
 // Cards
 
@@ -99,4 +128,15 @@
 @import "black-dashboard/custom/cards/card-map";
 @import "black-dashboard/custom/cards/card-user";
 @import "black-dashboard/custom/cards/card-task";
+@import "black-dashboard/custom/cards/card-animation-on-hover";
+@import "black-dashboard/custom/cards/card-collapse";
+@import "black-dashboard/custom/cards/card-contributions";
+@import "black-dashboard/custom/cards/card-lock";
+@import "black-dashboard/custom/cards/card-pricing";
+@import "black-dashboard/custom/cards/card-profile";
 @import "black-dashboard/custom/cards/card-plain";
+@import "black-dashboard/custom/cards/card-register";
+@import "black-dashboard/custom/cards/card-stats";
+@import "black-dashboard/custom/cards/card-subcategories";
+@import "black-dashboard/custom/cards/card-testimonials";
+@import "black-dashboard/custom/cards/card-wizard";

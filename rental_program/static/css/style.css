@@ -36,3 +36,7 @@ footer ul li a {
     width: 510px;
     height: 340px;
 }
+.card-body .input-group input.form-control {
+    font-weight: 700;
+    font-family: 'Noto Sans', sans-serif;
+}

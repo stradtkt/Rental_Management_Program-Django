@@ -10,7 +10,7 @@
           <form class="form" method="post" action="{% url 'accounts:login' %}">
               {% csrf_token %}
             <div class="card card-login card-hidden">
-              <div class="card-header card-header-primary text-center">
+              <div class="card-header card-header-info text-center">
                 <h4 class="card-title">Login</h4>
 {#                <div class="social-line">#}
 {#                  <a href="#" class="btn btn-just-icon btn-link btn-white">#}
@@ -40,7 +40,7 @@
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
-                        <i class="material-icons">face</i>
+                        <i class="fas fa-user-circle"></i>
                       </span>
                     </div>
                     <input type="text" class="form-control" name="username" placeholder="Username">
@@ -50,7 +50,7 @@
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
-                        <i class="material-icons">lock_outline</i>
+                        <i class="fas fa-lock"></i>
                       </span>
                     </div>
                     <input type="password" class="form-control" name="password" placeholder="Password...">
