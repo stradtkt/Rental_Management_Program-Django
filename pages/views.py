@@ -25,11 +25,12 @@ def privacy(request):
     return render(request, 'pages/privacy-policy.html')
 
 
-class HomePageView(ListView):
-    fields = ("photo_main", "price", "bedrooms", "bathrooms")
-    model = Property
-    context_object_name = "homes"
-    template_name = "pages/index.html"
+def index(request):
+    homes = Property.objects.all()[:3]
+    context = {
+        "homes": homes
+    }
+    return render(request, "pages/index.html", context)
 
 
 class HomePageDetailsView(DetailView):

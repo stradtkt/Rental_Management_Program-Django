@@ -24,10 +24,6 @@ footer ul li a {
     -webkit-border-radius: 5px;
 }
 
-.home-featured {
-    width: 25% !important;
-    height: auto !important;
-}
 .material-icons.dollar {
     color: forestgreen;
     background-color: #eee;

@@ -66,6 +66,92 @@
                     <div class="tab-pane active" id="sales">
                         <div class="chart-area">
                             <canvas id="chart-1"></canvas>
+                            <script src="{% static 'dashboard/assets/js/plugins/chartjs.min.js' %}"></script>
+                            <script type="application/javascript">
+                                gradientChartOptionsConfiguration =  {
+                                  maintainAspectRatio: false,
+                                  legend: {
+                                        display: false
+                                   },
+
+                                   tooltips: {
+                                     backgroundColor: '#fff',
+                                     titleFontColor: '#333',
+                                     bodyFontColor: '#666',
+                                     bodySpacing: 4,
+                                     xPadding: 12,
+                                     mode: "nearest",
+                                     intersect: 0,
+                                     position: "nearest"
+                                   },
+                                   responsive: true,
+                                   scales:{
+                                     yAxes: [{
+                                       barPercentage: 1.6,
+                                           gridLines: {
+                                             drawBorder: false,
+                                               color: 'rgba(29,140,248,0.0)',
+                                               zeroLineColor: "transparent",
+                                           },
+                                           ticks: {
+                                             suggestedMin:50,
+                                             suggestedMax: 110,
+                                               padding: 20,
+                                               fontColor: "#9a9a9a"
+                                           }
+                                         }],
+
+                                     xAxes: [{
+                                       barPercentage: 1.6,
+                                           gridLines: {
+                                             drawBorder: false,
+                                               color: 'rgba(220,53,69,0.1)',
+                                               zeroLineColor: "transparent",
+                                           },
+                                           ticks: {
+                                               padding: 20,
+                                               fontColor: "#9a9a9a"
+                                           }
+                                         }]
+                                     }
+                                };
+
+                                var ctx = document.getElementById("chart-1").getContext("2d");
+
+                                var gradientStroke = ctx.createLinearGradient(0,230,0,50);
+
+                                gradientStroke.addColorStop(1, 'rgba(50,205,50,0.2)');
+                                gradientStroke.addColorStop(0.2, 'rgba(50,205,50,0.0)');
+                                gradientStroke.addColorStop(0, 'rgba(50,205,50,0)');
+
+                                var data = {
+                                  labels: {{ labels|safe }},
+                                  datasets: [{
+                                    label: "Data",
+                                    fill: true,
+                                    backgroundColor: gradientStroke,
+                                    borderColor: '#32CD32',
+                                    borderWidth: 2,
+                                    borderDash: [],
+                                    borderDashOffset: 0.0,
+                                    pointBackgroundColor: '#32CD32',
+                                    pointBorderColor:'rgba(255,255,255,0)',
+                                    pointHoverBackgroundColor: '#32CD32',
+                                    pointBorderWidth: 20,
+                                    pointHoverRadius: 4,
+                                    pointHoverBorderWidth: 15,
+                                    pointRadius: 4,
+                                    data: {{ data|safe }},
+                                  }]
+                                };
+
+                                var myChart = new Chart(ctx, {
+                                  type: 'bar',
+                                  data: data,
+                                  options: gradientChartOptionsConfiguration
+                                });
+                            </script>
+
                         </div>
                     </div>
                     <div class="tab-pane" id="productivity">
@@ -97,8 +183,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
+        </div>
+        <div class="row">
     <div class="col-lg-4">
     <div class="card card-chart">
       <div class="card-header">
@@ -421,6 +507,26 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="row">
+            {% for home in homes %}
+                <div class="col-12 col-md-4">
+                    <a href="{% url 'properties:detail' home.id %}">
+                            <div class="card card-info">
+                                <img src="{{ home.photo_main.url }}" class="card-img-top" alt="{{ home.address }}" width="auto" height="300px">
+                                <div class="card-body text-center">
+                                    <h3 class="card-title">{{ home.title }}</h3>
+                                    <h6 class="card-text">{{ home.address }} {{ home.city }}, {{ home.state }} {{ home.zipcode }}</h6>
+                                    <p class="lead card-text">
+                                        <i class="fas fa-dollar-sign" style="color: forestgreen;"></i> {{ home.price }} <br>
+                                        Beds: {{ home.bedrooms }} ---- Baths: {{ home.bathrooms }} <br>
+                                        SQFT: {{ home.sqft }} sqft. ---- Garages: {{ home.garage }}
+                                    </p>
+                                </div>
+                            </div>
+                    </a>
+                </div>
+            {% endfor %}
         </div>
       </div>
       <footer class="footer">

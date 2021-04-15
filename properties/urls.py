@@ -6,5 +6,5 @@ app_name = "properties"
 urlpatterns = [
     path('', views.index, name="properties"),
     url(r'^(?P<pk>\d+)/$', views.PropertyDetailsView.as_view(), name="detail"),
-    url(r'^add-property/$', views.PropertyCreateView.as_view(), name="add_property"),
+    url(r'^add-property/$', views.add_property, name="add_property"),
 ]

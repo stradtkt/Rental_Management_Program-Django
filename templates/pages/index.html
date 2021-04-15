@@ -56,66 +56,47 @@
       </div>
       <div class="section text-center">
         <h2 class="title">Featured</h2>
-        <div class="team">
-          <div class="row">
-              {% for home in homes %}
-            <div class="col-md-4">
-              <div class="team-player">
-                <div class="card card-plain">
-                  <div class="ml-auto mr-auto">
-                      <a href="{% url 'pages:detail' pk=home.pk %}">
-                        <img src="{{ home.photo_main.url }}" style="height: 300px;" alt="Thumbnail Image" class="img-raised img-fluid home-featured">
-                      </a>
-                  </div>
-                  <h4 class="card-title"><i class="material-icons" style="color: forestgreen;">paid</i>{{ home.price }} <br>
-                    <small class="card-description text-muted">Bed: {{ home.bedrooms }}</small>
-                      <small class="card-description text-muted">Bath: {{ home.bathrooms }}</small>
-                  </h4>
-                  <div class="card-footer justify-content-center">
-                    <a href="#" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
-                    <a href="#" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
-                  </div>
+             <div class="row">
+                 {% if homes %}
+                 {% for home in homes %}
+                <div class="col-md-4">
+                    <div class="rotating-card-container">
+                        <div class="card card-rotate card-background">
+                            <div class="front front-background" style="background-image:url('{{ home.photo_main.url }}');">
+                                <div class="card-body">
+                                    <h6 class="card-category">Homes Trending</h6>
+                                    <a href="#pablo">
+                                        <h3 class="card-title">{{ home.title }}</h3>
+                                    </a>
+                                    <p class="card-description">
+                                        {{ home.address }} {{ home.city }}, {{ home.state }} {{ home.zipcode }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="back back-background" style="background-image: url('{{ home.photo_main.url }}');">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        {{ home.address }} {{ home.city }}, {{ home.state }} {{ home.zipcode }}
+                                    </h5>
+                                    <p class="card-description">
+                                        <i class="fas fa-dollar-sign" style="color: forestgreen"></i> {{ home.price }} <br>
+                                        <strong>Beds: </strong>{{ home.bedrooms }} <strong>Baths: </strong>{{ home.bathrooms }} <br>
+                                            <strong>SQFT: </strong> {{ home.sqft }} <strong>Lot Size: </strong> {{ home.lot_size }}
+                                    </p>
+                                    <div class="footer justify-content-center">
+                                        <a href="{% url 'properties:detail' pk=home.pk %}" class="btn btn-info btn-just-icon btn-fill btn-round">
+                                            <i class="material-icons">subject</i>
+                                        </a>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                 {% endfor %}
+             {% endif %}
             </div>
-              {% endfor %}
-          </div>
-        </div>
-      </div>
-      <div class="section section-contacts">
-        <div class="row">
-          <div class="col-md-8 ml-auto mr-auto">
-            <h2 class="text-center title">Work with us</h2>
-            <h4 class="text-center description">Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will responde get back to you in a couple of hours.</h4>
-            <form class="contact-form">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Your Name</label>
-                    <input type="email" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating">Your Email</label>
-                    <input type="email" class="form-control">
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="exampleMessage" class="bmd-label-floating">Your Message</label>
-                <textarea type="email" class="form-control" rows="4" id="exampleMessage"></textarea>
-              </div>
-              <div class="row">
-                <div class="col-md-4 ml-auto mr-auto text-center">
-                  <button class="btn btn-primary btn-raised">
-                    Send Message
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
         </div>
       </div>
     </div>
