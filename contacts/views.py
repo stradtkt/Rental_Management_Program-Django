@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from . import models
+from owners.models import Owner
 
-# Create your views here.
+def index(request):
+    context = {}
+    return render(request, 'contacts/contacts.html', context)

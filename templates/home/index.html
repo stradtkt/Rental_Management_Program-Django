@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %} Houses {% endblock %}
 {% block content %}
 
@@ -18,98 +19,13 @@
     <div class="section">
       <div class="container">
         <h2 class="section-title">Find A Home Based Off Of What You Need</h2>
-{#        <div class="row">#}
-{#          <div class="col-md-3">#}
-{#            <div class="card card-refine card-plain card-rose">#}
-{#              <div class="card-body">#}
-{#                <h4 class="card-title">#}
-{#                  Refine#}
-{#                  <button class="btn btn-default btn-fab btn-fab-mini btn-link pull-right" rel="tooltip" title="" data-original-title="Reset Filter">#}
-{#                    <i class="material-icons">cached</i>#}
-{#                  </button>#}
-{#                </h4>#}
-{#                <div id="accordion" role="tablist">#}
-{#                  <div class="card card-collapse">#}
-{#                    <div class="card-header" role="tab" id="headingOne">#}
-{#                      <h5 class="mb-0">#}
-{#                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">#}
-{#                          Price Range#}
-{#                          <i class="material-icons">keyboard_arrow_down</i>#}
-{#                        </a>#}
-{#                      </h5>#}
-{#                    </div>#}
-{#                    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">#}
-{#                      <div class="card-body card-refine">#}
-{#                        <span id="price-left" class="price-left pull-left" data-currency="€">$</span>#}
-{#                        <span id="price-right" class="price-right pull-right" data-currency="€">$</span>#}
-{#                        <div class="clearfix"></div>#}
-{#                        <div id="sliderRefine" class="slider slider-rose noUi-target noUi-ltr noUi-horizontal"></div>#}
-{#                      </div>#}
-{#                    </div>#}
-{#                  </div>#}
-{##}
-{#                  <div class="card card-collapse">#}
-{#                    <div class="card-header" role="tab" id="headingThree">#}
-{#                      <h5 class="mb-0">#}
-{#                        <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">#}
-{#                        Bedrooms#}
-{#                          <i class="material-icons">keyboard_arrow_down</i>#}
-{#                        </a>#}
-{#                      </h5>#}
-{#                    </div>#}
-{#                    <div id="collapseThree" class="collapse show" role="tabpanel" aria-labelledby="headingThree">#}
-{#                      <div class="card-body">#}
-{##}
-{#                        <div class="form-check">#}
-{#                          <label class="form-check-label">#}
-{#                            <span class="form-check-sign">#}
-{#                              <span class="check"></span>#}
-{#                            </span>#}
-{#                          </label>#}
-{#                        </div>#}
-{##}
-{##}
-{#                      </div>#}
-{#                    </div>#}
-{#                  </div>#}
-{#                  <div class="card card-collapse">#}
-{#                    <div class="card-header" role="tab" id="headingFour">#}
-{#                      <h5 class="mb-0">#}
-{#                        <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">#}
-{#                            Garage#}
-{#                          <i class="material-icons">keyboard_arrow_down</i>#}
-{#                        </a>#}
-{#                      </h5>#}
-{#                    </div>#}
-{#                    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">#}
-{#                      <div class="card-body">#}
-{##}
-{##}
-{#                        <div class="form-check">#}
-{#                          <label class="form-check-label">#}
-{#                            <input class="form-check-input" type="checkbox" value="" checked>#}
-{##}
-{#                            <span class="form-check-sign">#}
-{#                              <span class="check"></span>#}
-{#                            </span>#}
-{#                          </label>#}
-{#                        </div>#}
-{##}
-{##}
-{#                      </div>#}
-{#                    </div>#}
-{#                  </div>#}
-{#                </div>#}
-{#              </div>#}
-{#            </div>#}
-{#          </div>#}
             <div class="row">
                 {% for home in houses %}
               <div class="col-md-4">
                 <div class="card card-product card-plain shadow" data-colored-shadow="false">
                   <div class="card-header card-header-image">
                     <a href="{% url 'properties:detail' pk=home.pk %}">
-                      <img src="{{ home.photo_main.url }}" alt="{{ home.title }}">
+                      <img src="{{ home.photo_main.url }}" alt="{{ home.title }}" width="auto" height="300px">
                     </a>
                   </div>
                   <div class="card-body">
@@ -122,7 +38,7 @@
                   </div>
                   <div class="card-footer justify-content-between">
                     <div class="price-container">
-                      <span class="price"><i class="material-icons dollar">paid</i> {{ home.price }}</span>
+                      <span class="price"><i class="fas fa-dollar-sign" style="color: forestgreen;"></i> {{ home.price | intcomma }} per month</span>
                     </div>
                     <button class="btn btn-rose btn-link btn-fab btn-fab-mini btn-round pull-right" rel="tooltip" title="" data-placement="left" data-original-title="Remove from wishlist">
                       <i class="material-icons">favorite</i>
@@ -136,140 +52,7 @@
               </div>
             </div>
         </div>
-        <br>
-        <h2 class="section-title">News in fashion</h2>
-        <div class="row">
-
-          <div class="col-md-4">
-            <div class="card card-background" style="background-image: url('{% static "kit/assets/img/dg3.jpg" %}')">
-              <div class="card-body">
-                <h6 class="card-category text-info">Fashion News</h6>
-                <h3 class="card-title">Kanye joins the Yeezy team at Adidas</h3>
-                <p class="card-description">
-                  Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                </p>
-                <a href="#" class="btn btn-white btn-round">
-                  <i class="material-icons">subject</i> Read
-                </a>
-              </div>
-            </div> <!-- end card -->
-          </div>
-
-          <div class="col-md-6">
-            <div class="card card-background" style="background-image: url('{% static "kit/assets/img/dg3.jpg" %}')">
-              <div class="card-body">
-                <h6 class="card-category text-info">Tutorials</h6>
-                <a href="#pablo">
-                  <h3 class="card-title">Trending colors of 2017</h3>
-                </a>
-                <p class="card-description">
-                  Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                </p>
-                <a href="#pablo" class="btn btn-white btn-round">
-                  <i class="material-icons">subject</i> Read
-                </a>
-              </div>
-            </div> <!-- end card -->
-          </div>
-        </div>
-      </div>
-    </div><!-- section -->
-  </div> <!-- end-main-raised -->
-{#  <div class="section section-blog">#}
-{#    <div class="container">#}
-{#      <h2 class="section-title">Latest Articles</h2>#}
-{#      <div class="row">#}
-{#        <div class="col-md-4">#}
-{#          <div class="card card-blog">#}
-{#            <div class="card-header card-header-image">#}
-{#              <a href="#">#}
-{#                <img src="" alt="">#}
-{#              </a>#}
-{#            </div>#}
-{#            <div class="card-body">#}
-{#              <h6 class="card-category text-rose">Trends</h6>#}
-{#              <h4 class="card-title">#}
-{#                <a href="#"></a>#}
-{#              </h4>#}
-{#              <p class="card-description">#}
-{##}
-{#              </p>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#        <div class="col-md-4">#}
-{#          <div class="card card-blog">#}
-{#            <div class="card-header card-header-image">#}
-{#              <a href="#">#}
-{#                <img src="" alt="">#}
-{#              </a>#}
-{#            </div>#}
-{#            <div class="card-body">#}
-{#              <h6 class="card-category text-rose"></h6>#}
-{#              <h4 class="card-title">#}
-{#                <a href="#"></a>#}
-{#              </h4>#}
-{#              <p class="card-description">#}
-{##}
-{#              </p>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#        <div class="col-md-4">#}
-{#          <div class="card card-blog">#}
-{#            <div class="card-header card-header-image">#}
-{#              <a href="#pablo">#}
-{#                <img src="" alt="">#}
-{#              </a>#}
-{#            </div>#}
-{#            <div class="card-body">#}
-{#              <h6 class="card-category text-rose">Fashion week</h6>#}
-{#              <h4 class="card-title">#}
-{#                <a href="#pablo">Check the latest fashion events and which are the trends</a>#}
-{#              </h4>#}
-{#              <p class="card-description">#}
-{#                Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...#}
-{#              </p>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#      </div>#}
-{#    </div>#}
-{#  </div><!-- section -->#}
-  <div class="subscribe-line subscribe-line-image" data-parallax="true" style="background-image: url('{% static "kit/assets/img/examples/ecommerce-header.jpg"%}');">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 ml-auto mr-auto">
-          <div class="text-center">
-            <h3 class="title">Subscribe to our Newsletter</h3>
-            <p class="description">
-              Join our newsletter and get news in your inbox every week! We hate spam too, so no worries about this.
-            </p>
-          </div>
-          <div class="card card-raised card-form-horizontal">
-            <div class="card-body">
-              <form method="" action="">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="material-icons">mail</i>
-                        </span>
-                      </div>
-                      <input type="text" class="form-control" placeholder="Your Email...">
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <button type="button" class="btn btn-rose btn-block">Subscribe</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-  </div>
 
 {% endblock %}
